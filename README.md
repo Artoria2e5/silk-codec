@@ -24,7 +24,8 @@ A library for convert PCM to tencent silk files.
 ### CLI
 
 ```shell
-ffmpeg -y -i $INPUT -acodec pcm_s16le -f s16le -ac 1 tmp.pcm
+# encode
+ffmpeg -y -i "$INPUT" -acodec pcm_s16le -f s16le -ac 1 tmp.pcm
 silk_codec pts -i tmp.pcm -s $HZ -o out.silk
 ```
 
@@ -39,6 +40,13 @@ Output #0, s16le, to 'pipe:':
     Stream #0:0: Audio: pcm_s16le, 44100 Hz, mono, s16, 705 kb/s
                                    ^~~~~
                                    It is $HZ
+```
+
+```shell
+# decode
+HZ=24000
+silk_codec stp -i "$INPUT" -o tmp.pcm -s $HZ
+ffmpeg -y -ar $HZ -f s16le -i tmp.pcm -o out.wav
 ```
 
 ### Java
