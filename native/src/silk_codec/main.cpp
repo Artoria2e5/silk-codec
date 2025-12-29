@@ -11,7 +11,7 @@ int pts(int argc, const char **args) {
     cxxopts::Options options("pts", "");
     options.add_options()
             ("i,input", "PCM file", cxxopts::value<std::string>())//
-            ("s,simple-rate", "simple rate of PCM", cxxopts::value<int>())//
+            ("s,simple-rate", "sample rate (PCM)", cxxopts::value<int>())//
             ("o,output", "output", cxxopts::value<std::string>())//
             ;
 
@@ -58,7 +58,7 @@ int stp(int argc, const char **args) {
     options.add_options()//
             ("i,input", "silk file", cxxopts::value<std::string>())//
             ("o,output", "output", cxxopts::value<std::string>())//
-            ("s,simple-rate", "simple rate of silk", cxxopts::value<int>()->default_value("24000"))//
+            ("s,simple-rate", "sample rate (PCM and SILK)", cxxopts::value<int>()->default_value("24000"))//
             ("l,loss", "loss", cxxopts::value<int>()->default_value("0"))//
             ;
 
