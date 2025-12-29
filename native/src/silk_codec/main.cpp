@@ -63,7 +63,7 @@ int stp(int argc, const char **args) {
             ;
 
     auto opts = options.parse(argc, args);
-    if (!opts.count("i") || !opts.count("s") || !opts.count("o")) {
+    if (!opts.count("i") || !opts.count("o")) {
         std::cerr << options.help() << std::endl;
         return 1;
     }
